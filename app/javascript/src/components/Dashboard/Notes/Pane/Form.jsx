@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+import { Select } from "@bigbinary/neetoui";
 import { Formik, Form } from "formik";
 import { Button, Pane } from "neetoui";
 import { Input, Textarea } from "neetoui/formik";
@@ -47,7 +48,64 @@ const NoteForm = ({ onClose, refetch, note, isEdit }) => {
               className="w-full flex-grow-0"
               label="Description"
               name="description"
-              rows={8}
+              rows={4}
+            />
+            <Select
+              isClearable
+              isSearchable
+              required
+              className="w-full flex-grow-0"
+              label="Assigned Contacts"
+              name="ValueList"
+              placeholder="Select assigned contact"
+              options={[
+                {
+                  label: "Olive",
+                  value: "oliver",
+                },
+                {
+                  label: "James",
+                  value: "james",
+                },
+                {
+                  label: "Emily",
+                  value: "emily",
+                },
+              ]}
+            />
+            <Select
+              isMulti
+              required
+              className="w-full flex-grow-0"
+              label="Tags"
+              name="ValueList"
+              placeholder="Select Tag(s)"
+              options={[
+                {
+                  label: "Getting Started",
+                  value: "value1",
+                },
+                {
+                  label: "OnBoarding",
+                  value: "value2",
+                },
+                {
+                  label: "User Flows",
+                  value: "value3",
+                },
+                {
+                  label: "UX",
+                  value: "value4",
+                },
+                {
+                  label: "Bugs",
+                  value: "value5",
+                },
+                {
+                  label: "V2",
+                  value: "value6",
+                },
+              ]}
             />
           </Pane.Body>
           <Pane.Footer>
