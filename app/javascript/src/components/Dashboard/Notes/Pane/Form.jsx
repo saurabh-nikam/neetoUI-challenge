@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 
-import { Select } from "@bigbinary/neetoui";
 import { Formik, Form } from "formik";
-import { Button, Pane } from "neetoui";
+import { Button, Pane, Select } from "neetoui";
 import { Input, Textarea } from "neetoui/formik";
 
 import notesApi from "apis/notes";
