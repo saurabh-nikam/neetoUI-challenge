@@ -20,7 +20,7 @@ const DeleteAlert = ({ onClose }) => {
       isOpen
       isSubmitting={deleting}
       message="Are you sure you want to continue? This cannot be undone."
-      title={"Delete note?"}
+      title="Delete note?"
       onClose={onClose}
       onSubmit={handleDelete}
     />

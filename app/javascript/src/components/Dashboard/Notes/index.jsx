@@ -9,7 +9,7 @@ import { NOTES as notesList } from "./constants";
 import DeleteAlert from "./DeleteAlert";
 import Note from "./Note";
 import NotesMenu from "./NotesMenu";
-import NewNotePane from "./Pane/Create";
+import Create from "./Pane/Create";
 
 const Notes = () => {
   const [showNewNotePane, setShowNewNotePane] = useState(false);
@@ -54,7 +54,7 @@ const Notes = () => {
             title="Looks like you don't have any notes!"
           />
         )}
-        <NewNotePane
+        <Create
           fetchNotes={notesList}
           setShowPane={setShowNewNotePane}
           showPane={showNewNotePane}
