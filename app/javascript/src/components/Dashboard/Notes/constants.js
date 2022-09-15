@@ -25,7 +25,7 @@ export const NOTES_TABLE_COLUMN_DATA = [
 export const NOTES_FORM_VALIDATION_SCHEMA = yup.object().shape({
   title: yup.string().required("Title is required"),
   description: yup.string().required("Description is required"),
-  assignedContact: yup.object().required("Assigned Contact is required"),
+  assignedContact: yup.object().required("Assigned one contact is required"),
   tags: yup
     .array()
     .of(
