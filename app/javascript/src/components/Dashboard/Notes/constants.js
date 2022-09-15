@@ -28,7 +28,14 @@ export const NOTES_FORM_VALIDATION_SCHEMA = Yup.object().shape({
   title: Yup.string().required("Title is required"),
   description: Yup.string().required("Description is required"),
   assignedContact: Yup.object().required("Assigned Contacts is required"),
-  tags: Yup.object().required("Tags is required"),
+  tags: Yup.array()
+    .min(1, "Choose Atleast 1")
+    .of(
+      Yup.object().shape({
+        label: Yup.string().required(),
+        value: Yup.string().required(),
+      })
+    ),
 });
 
 export const NOTES = [
@@ -38,7 +45,7 @@ export const NOTES = [
     desc: '"Are you getting my texts???" she texted to him. He glanced at it and chuckled under his breath. Of course he was getting them, but if he wasn\'t getting',
     executionStatus: "Getting Started",
     status: "Created",
-    createdAt: "1 hours ago",
+    createdAt: "2022-09-14T16:41:57+02:00",
     createdBy: "Oliver Smith",
     profilePicture: ProfilePicture,
   },
@@ -48,7 +55,7 @@ export const NOTES = [
     desc: '"Are you getting my texts???" she texted to him. He glanced at it and chuckled under his breath. Of course he was getting them, but if he wasn\'t getting',
     executionStatus: "Getting Started",
     status: "Drafted",
-    createdAt: "2 hours ago",
+    createdAt: "2022-09-13T16:41:57+02:00",
     createdBy: "Oliver Smith",
     profilePicture: ProfilePicture,
   },
@@ -58,7 +65,7 @@ export const NOTES = [
     desc: '"Are you getting my texts???" she texted to him. He glanced at it and chuckled under his breath. Of course he was getting them, but if he wasn\'t getting',
     executionStatus: "Completed",
     status: "Completed",
-    createdAt: "3 hours ago",
+    createdAt: "2022-09-12T14:41:57+02:00",
     createdBy: "Oliver Smith",
     profilePicture: ProfilePicture,
   },
@@ -68,7 +75,7 @@ export const NOTES = [
     desc: '"Are you getting my texts???" she texted to him. He glanced at it and chuckled under his breath. Of course he was getting them, but if he wasn\'t getting',
     executionStatus: "Completed",
     status: "Closed",
-    createdAt: "5 hours ago",
+    createdAt: "2022-09-11T13:41:57+02:00",
     createdBy: "Oliver Smith",
     profilePicture: ProfilePicture,
   },

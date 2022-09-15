@@ -3,6 +3,8 @@ import React from "react";
 import { Clock, MenuVertical } from "neetoicons";
 import { Typography, Tag, Avatar, Tooltip, Dropdown } from "neetoui";
 
+import { calculateCreatedAgo, formatDatetoWeekdayTime } from "./utils";
+
 const Note = ({ note }) => (
   <div className="mb-3 box-border w-full border border-gray-300 bg-white p-4 shadow-sm">
     <div className="flex justify-between">
@@ -26,9 +28,15 @@ const Note = ({ note }) => (
       <div className="mt-1.5 flex flex-row items-center">
         <div className="m-1 flex flex-row items-center space-x-1">
           <Clock size={15} />
-          <Tooltip content={note.createdAt} hideAfter={5000} position="bottom">
+          <Tooltip
+            content={formatDatetoWeekdayTime(note.createdAt)}
+            hideAfter={5000}
+            position="bottom"
+          >
             <Typography style="body2">
-              {note.status} {note.createdAt}
+              {note.status}
+              {` `}
+              {calculateCreatedAgo(note.createdAt)}
             </Typography>
           </Tooltip>
           <Avatar
