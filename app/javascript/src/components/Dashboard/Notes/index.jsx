@@ -15,6 +15,7 @@ const Notes = () => {
   const [showNewNotePane, setShowNewNotePane] = useState(false);
   const [showDeleteAlert, setShowDeleteAlert] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
+
   const [showMenu, setShowMenu] = useState(false);
   const EmptyNotesListImage = "https://i.pravatar.cc/300";
 
