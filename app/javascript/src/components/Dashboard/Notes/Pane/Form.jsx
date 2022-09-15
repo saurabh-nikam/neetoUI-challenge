@@ -49,7 +49,7 @@ const NoteForm = ({ onClose, note, isEdit }) => {
               isSearchable
               required
               className="w-full flex-grow-0"
-              label="Assigned Contacts"
+              label="Assigned Contact"
               name="assignedContact"
               placeholder="Select assigned contact"
               options={CONTACTS.map(contact => ({

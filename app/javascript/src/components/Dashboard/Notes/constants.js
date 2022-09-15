@@ -1,12 +1,10 @@
-import * as Yup from "yup";
-
-const ProfilePicture = "https://i.pravatar.cc/300";
+import * as yup from "yup";
 
 export const NOTES_FORM_INITIAL_FORM_VALUES = {
   title: "",
   description: "",
-  assignedContact: "",
-  tags: "",
+  assignedContact: null,
+  tags: [],
 };
 
 export const NOTES_TABLE_COLUMN_DATA = [
@@ -24,18 +22,19 @@ export const NOTES_TABLE_COLUMN_DATA = [
   },
 ];
 
-export const NOTES_FORM_VALIDATION_SCHEMA = Yup.object().shape({
-  title: Yup.string().required("Title is required"),
-  description: Yup.string().required("Description is required"),
-  assignedContact: Yup.object().required("Assigned Contacts is required"),
-  tags: Yup.array()
-    .min(1, "Choose Atleast 1")
+export const NOTES_FORM_VALIDATION_SCHEMA = yup.object().shape({
+  title: yup.string().required("Title is required"),
+  description: yup.string().required("Description is required"),
+  assignedContact: yup.object().required("Assigned Contact is required"),
+  tags: yup
+    .array()
     .of(
-      Yup.object().shape({
-        label: Yup.string().required(),
-        value: Yup.string().required(),
+      yup.object().shape({
+        label: yup.string().required(),
+        value: yup.string().required(),
       })
-    ),
+    )
+    .min(1, "Choose atleast one tag"),
 });
 
 export const NOTES = [
@@ -47,7 +46,7 @@ export const NOTES = [
     status: "Created",
     createdAt: "2022-09-14T16:41:57+02:00",
     createdBy: "Oliver Smith",
-    profilePicture: ProfilePicture,
+    profilePicture: "https://i.pravatar.cc/300",
   },
   {
     id: 2,
@@ -57,7 +56,7 @@ export const NOTES = [
     status: "Drafted",
     createdAt: "2022-09-13T16:41:57+02:00",
     createdBy: "Oliver Smith",
-    profilePicture: ProfilePicture,
+    profilePicture: "https://i.pravatar.cc/300",
   },
   {
     id: 3,
@@ -67,7 +66,7 @@ export const NOTES = [
     status: "Completed",
     createdAt: "2022-09-12T14:41:57+02:00",
     createdBy: "Oliver Smith",
-    profilePicture: ProfilePicture,
+    profilePicture: "https://i.pravatar.cc/300",
   },
   {
     id: 4,
@@ -77,7 +76,7 @@ export const NOTES = [
     status: "Closed",
     createdAt: "2022-09-11T13:41:57+02:00",
     createdBy: "Oliver Smith",
-    profilePicture: ProfilePicture,
+    profilePicture: "https://i.pravatar.cc/300",
   },
 ];
 

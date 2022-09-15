@@ -4,7 +4,7 @@ import { Search, Settings, Plus } from "neetoicons";
 import { Typography } from "neetoui";
 import { MenuBar } from "neetoui/layouts";
 
-const NotesMenu = ({ showMenu }) => {
+const Menu = ({ showMenu }) => {
   const [isSearchCollapsed, setIsSearchCollapsed] = useState(true);
 
   return (
@@ -18,7 +18,7 @@ const NotesMenu = ({ showMenu }) => {
           iconProps={[
             {
               icon: Search,
-              onClick: () => setIsSearchCollapsed(!isSearchCollapsed),
+              onClick: () => setIsSearchCollapsed(prevState => !prevState),
             },
           ]}
         >
@@ -68,4 +68,4 @@ const NotesMenu = ({ showMenu }) => {
   );
 };
 
-export default NotesMenu;
+export default Menu;

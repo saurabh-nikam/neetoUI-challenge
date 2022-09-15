@@ -14,14 +14,11 @@ const Note = ({ note }) => (
         <li>Delete</li>
       </Dropdown>
     </div>
-    <div className="mt-1 mb-3" style={{ color: "#68737D" }}>
+    <div className="mt-1 mb-3">
       <Typography style="body2">{note.desc}</Typography>
     </div>
     <hr />
-    <div
-      className="mt-3 flex flex-row items-center"
-      style={{ color: "#68737D" }}
-    >
+    <div className="mt-3 flex flex-row items-center">
       <div className="mt-2 flex-grow items-start">
         <Tag label={note.executionStatus} />
       </div>
@@ -34,9 +31,7 @@ const Note = ({ note }) => (
             position="bottom"
           >
             <Typography style="body2">
-              {note.status}
-              {` `}
-              {calculateCreatedAgo(note.createdAt)}
+              {`${note.status} ${calculateCreatedAgo(note.createdAt)}`}
             </Typography>
           </Tooltip>
           <Avatar
