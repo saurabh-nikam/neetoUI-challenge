@@ -1,25 +1,18 @@
 import React, { useState } from "react";
 
 import { Formik, Form } from "formik";
-import { Button, Pane } from "neetoui";
-import { Input, Textarea } from "neetoui/formik";
+import { Button, Pane, Toastr } from "neetoui";
+import { Input, Textarea, Select } from "neetoui/formik";
 
-import notesApi from "apis/notes";
+import { NOTES_FORM_VALIDATION_SCHEMA, TAGS, CONTACTS } from "../constants";
 
-import { NOTES_FORM_VALIDATION_SCHEMA } from "../constants";
-
-const NoteForm = ({ onClose, refetch, note, isEdit }) => {
+const NoteForm = ({ onClose, note, isEdit }) => {
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = async values => {
+  const handleSubmit = () => {
     try {
-      if (isEdit) {
-        await notesApi.update(note.id, values);
-      } else {
-        await notesApi.create(values);
-      }
-      refetch();
       onClose();
+      Toastr.success("Note added successfully");
     } catch (err) {
       logger.error(err);
     }
@@ -41,13 +34,40 @@ const NoteForm = ({ onClose, refetch, note, isEdit }) => {
               className="w-full flex-grow-0"
               label="Title"
               name="title"
+              placeholder="Enter note title here"
             />
             <Textarea
               required
               className="w-full flex-grow-0"
               label="Description"
               name="description"
-              rows={8}
+              placeholder="Enter description title here"
+              rows={1}
+            />
+            <Select
+              isClearable
+              isSearchable
+              required
+              className="w-full flex-grow-0"
+              label="Assigned Contact"
+              name="assignedContact"
+              placeholder="Select assigned contact"
+              options={CONTACTS.map(contact => ({
+                label: contact.label,
+                value: contact.value,
+              }))}
+            />
+            <Select
+              isMulti
+              required
+              className="w-full flex-grow-0"
+              label="Tags"
+              name="tags"
+              placeholder="Select Tag(s)"
+              options={TAGS.map(tag => ({
+                label: tag.label,
+                value: tag.value,
+              }))}
             />
           </Pane.Body>
           <Pane.Footer>

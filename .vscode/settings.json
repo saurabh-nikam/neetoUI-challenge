@@ -18,4 +18,9 @@
     }
   },
   "ruby.format": "rubocop",
+  "cSpell.words": [
+    "Atleast",
+    "Formik",
+    "neetoui"
+  ]
 }

@@ -1,5 +1,6 @@
 import React from "react";
 
+// @ts-ignore
 import { Button } from "neetoui";
 
 import { FEATURE_LIST } from "./constants";
