@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { Button } from "neetoui";
+import { Button, Toastr } from "neetoui";
 import { Container, Header } from "neetoui/layouts";
 
 import EmptyState from "components/Common/EmptyState";
@@ -18,6 +18,15 @@ const Notes = () => {
 
   const [showMenu, setShowMenu] = useState(false);
   const EmptyNotesListImage = "https://i.pravatar.cc/300";
+
+  const handleDelete = () => {
+    try {
+      setShowDeleteAlert(false);
+      Toastr.success("Note deleted successfully.");
+    } catch (error) {
+      logger.error(error);
+    }
+  };
 
   return (
     <>
@@ -43,7 +52,13 @@ const Notes = () => {
         {NOTES.length ? (
           <div className="mt-2 flex w-full flex-col">
             {NOTES.map(note => (
-              <Note key={note.id} note={note} />
+              <Note
+                key={note.id}
+                note={note}
+                onDeleteClick={() => {
+                  setShowDeleteAlert(true);
+                }}
+              />
             ))}
           </div>
         ) : (
@@ -61,7 +76,10 @@ const Notes = () => {
           showPane={showNewNotePane}
         />
         {showDeleteAlert && (
-          <DeleteAlert onClose={() => setShowDeleteAlert(false)} />
+          <DeleteAlert
+            handleDelete={handleDelete}
+            onClose={() => setShowDeleteAlert(false)}
+          />
         )}
       </Container>
     </>
