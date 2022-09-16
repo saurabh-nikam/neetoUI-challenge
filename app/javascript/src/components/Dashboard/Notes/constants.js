@@ -34,7 +34,8 @@ export const NOTES_FORM_VALIDATION_SCHEMA = yup.object().shape({
         value: yup.string().required(),
       })
     )
-    .min(1, "Choose atleast one tag"),
+    .min(1, "Choose atleast one tag")
+    .required("Tags are required"),
 });
 
 export const NOTES = [
