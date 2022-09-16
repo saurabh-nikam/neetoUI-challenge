@@ -5,13 +5,13 @@ import { Typography, Tag, Avatar, Tooltip, Dropdown } from "neetoui";
 
 import { calculateCreatedAgo, formatDatetoWeekdayTime } from "./utils";
 
-const Note = ({ note }) => (
+const Note = ({ note, onDeleteClick }) => (
   <div className="mb-3 box-border w-full border border-gray-300 bg-white p-4 shadow-sm">
     <div className="flex justify-between">
       <Typography style="h4">{note.title}</Typography>
       <Dropdown buttonStyle="text" icon={MenuVertical} position="bottom-end">
         <li>Edit</li>
-        <li>Delete</li>
+        <li onClick={() => onDeleteClick(note.id)}>Delete</li>
       </Dropdown>
     </div>
     <div className="mt-1 mb-3">
