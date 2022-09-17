@@ -55,7 +55,7 @@ const Notes = () => {
               <Note
                 key={note.id}
                 note={note}
-                onDeleteClick={() => {
+                handleDeleteButton={() => {
                   setShowDeleteAlert(true);
                 }}
               />
