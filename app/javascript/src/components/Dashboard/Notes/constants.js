@@ -25,16 +25,20 @@ export const NOTES_TABLE_COLUMN_DATA = [
 export const NOTES_FORM_VALIDATION_SCHEMA = yup.object().shape({
   title: yup.string().required("Title is required"),
   description: yup.string().required("Description is required"),
-  assignedContact: yup.object().required("Assigned one contact is required"),
+  assignedContact: yup
+    .object({ label: yup.string().required(), value: yup.string().required() })
+    .nullable()
+    .required("Assigned one contact is required"),
   tags: yup
     .array()
     .of(
       yup.object().shape({
-        label: yup.string().required(),
-        value: yup.string().required(),
+        label: yup.string().required(""),
+        value: yup.string().required(""),
       })
     )
-    .min(1, "Choose atleast one tag"),
+    .min(1, "Atleast one tag required")
+    .required("Tag is required"),
 });
 
 export const NOTES = [
