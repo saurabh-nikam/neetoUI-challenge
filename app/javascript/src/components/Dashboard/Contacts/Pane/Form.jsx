@@ -14,13 +14,9 @@ import {
 const Form = ({ onClose }) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const handleSubmit = () => {
-    try {
-      setIsSubmitted(true);
-      Toastr.success("Contact added SuccessFully");
-      onClose();
-    } catch (err) {
-      logger.error(err);
-    }
+    setIsSubmitted(true);
+    Toastr.success("Contact added SuccessFully");
+    onClose();
   };
 
   return (
