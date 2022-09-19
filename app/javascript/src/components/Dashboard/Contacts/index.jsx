@@ -52,7 +52,7 @@ const Contacts = () => {
         <Alert
           closeButton={false}
           isOpen={showDeleteAlert}
-          message="Are you sure you want to delete this contact? This Change cannot be undone."
+          message="Are you sure you want to delete this contact? This change cannot be undone."
           size="md"
           title="Delete Contact"
           onClose={() => setShowDeleteAlert(false)}
