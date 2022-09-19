@@ -2,7 +2,9 @@ import React from "react";
 
 import { Table as NeetoUITable } from "neetoui";
 
+
 import { getContactTableColumnData } from "./getContactTableColumnData";
+
 
 import { CONTACT_DETAILS } from "../constants";
 

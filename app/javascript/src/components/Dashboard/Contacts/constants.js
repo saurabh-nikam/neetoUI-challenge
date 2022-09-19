@@ -31,6 +31,7 @@ export const CONTACTS_FORM_VALIDATION_SCHEMA = yup.object().shape({
     }),
 });
 
+
 export const PERSONS_DATA = [
   {
     name: "Ronald Richards",
