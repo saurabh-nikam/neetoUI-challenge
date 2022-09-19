@@ -4,12 +4,14 @@ import { Button, Alert, Toastr } from "neetoui";
 import { Container, Header } from "neetoui/layouts";
 
 import Menu from "./Menu";
+import NewContactPane from "./Pane/Create";
 import Table from "./Table";
 
 const Contacts = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [showDeleteAlert, setShowDeleteAlert] = useState(false);
+  const [showNewContactPane, setShowNewContactPane] = useState(false);
 
   const handleSubmit = () => {
     setShowDeleteAlert(showDeleteAlert => !showDeleteAlert);
@@ -25,7 +27,9 @@ const Contacts = () => {
             <Button
               icon="ri-add-line"
               label="Add New Contact"
-              onClick={() => {}}
+              onClick={() => {
+                setShowNewContactPane(true);
+              }}
             />
           }
           menuBarToggle={() => {
@@ -41,10 +45,14 @@ const Contacts = () => {
             setShowDeleteAlert(showDeleteAlert => !showDeleteAlert)
           }
         />
+        <NewContactPane
+          setShowPane={setShowNewContactPane}
+          showPane={showNewContactPane}
+        />
         <Alert
           closeButton={false}
           isOpen={showDeleteAlert}
-          message="Are you sure you want to delete this contact? These changes cannot be undone."
+          message="Are you sure you want to delete this contact? This Change cannot be undone."
           size="md"
           title="Delete Contact"
           onClose={() => setShowDeleteAlert(false)}
